@@ -1,0 +1,114 @@
+@import url("https://fonts.googleapis.com/css2?family=Bitter&family=Rajdhani:wght@600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  background-image: url("assets/bg3.avif");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.container {
+  height: 100vh;
+  width: 97vw;
+  margin: 0px auto;
+  background-image: url("assets/bg3.avif");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.alrm-container {
+  max-width: 450px;
+  width: 430px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  padding: 10px;
+  border-radius: 15px;
+}
+
+.logo > img {
+  width: 40px;
+  display: block;
+
+  margin: 0 auto;
+}
+
+.logo > p {
+  text-align: center;
+  /* padding: 10px; */
+  font-family: "Bitter", serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: lightgrey;
+}
+
+.divider {
+  border: none;
+  height: 2px;
+  background-image: linear-gradient(to right, transparent, #ccc, transparent);
+  margin: 20px 0;
+}
+
+.current-time {
+  width: 100%;
+}
+
+.time-current {
+  box-sizing: border-box;
+  /* display: flex;
+  flex-direction: column; */
+  display: inline-block;
+  width: 24%;
+}
+
+.time-current > * {
+  display: block;
+}
+
+.time-current label {
+  text-align: center;
+  font-family: "Bitter", serif;
+  font-size: 1.3rem;
+  color: lightgray;
+}
+
+.time-current input {
+  width: 90%;
+  height: 40px;
+  padding: none;
+  border: none;
+  font-size: 1.2rem;
+  font-family: "Bitter", serif;
+  color: lightgrey;
+  outline: none;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  padding-left: 0.6rem;
+  -moz-appearance: textfield;
+  text-align: center;
+  caret-color: white;
+}
+
+.time-current input[type="number"]::-webkit-outer-spin-button,
+.time-current input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.sub-heading {
+  text-align: center;
+  font-size: 1.2rem;
+  font-family: "Bitter", serif;
+  color: lightgrey;
+  margin-top: 5px;
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="src/assets/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="src/styles.css" />
+    <title>Alarm Clock</title>
+</head>
+
+<body>
+    <main>
+        <div class="container">
+            <div class="alrm-container">
+                <div class="alrm-head">
+                    <section class="logo">
+                        <img src="src/assets/clock-icon.png" alt="clock-icon" />
+                        <p>Alarm Clock</p>
+                    </section>
+                    <hr class="divider" />
+                    <section class="current-time">
+                        <section class="time-current">
+                            <label for="current-hours">Hours</label>
+                            <input type="number" name="current-hours" id="current-hours" value="00" disabled />
+                        </section>
+                        <section class="time-current">
+                            <label for="current-minutes">Min</label>
+                            <input type="number" name="current-minutes" id="current-minutes" value="00" disabled />
+                        </section>
+                        <section class="time-current">
+                            <label for="current-seconds">Sec</label>
+                            <input type="number" name="current-seconds" id="current-seconds" value="00" disabled />
+                        </section>
+                        <section class="time-current">
+                            <label for="current-zone">AM/PM</label>
+                            <input type="text" name="current-period" id="current-period" value="AM" disabled />
+                        </section>
+                    </section>
+                    <p class="sub-heading">Current Time</p>
+                    <hr class="divider" />
+                    <section class="time-inputs"></section>
+                </div>
+                <hr class="divider" />
+                <div class="alrm-body"></div>
+            </div>
+        </div>
+    </main>
+    <script src="src/index.js"></script>
+</body>
+
+</html>
