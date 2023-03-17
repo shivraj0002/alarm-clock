@@ -61,14 +61,12 @@ body {
 
 .current-time {
   width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0px;
 }
 
 .time-current {
-  box-sizing: border-box;
-  /* display: flex;
-  flex-direction: column; */
-  display: inline-block;
-  width: 24%;
 }
 
 .time-current > * {
@@ -83,7 +81,7 @@ body {
 }
 
 .time-current input {
-  width: 90%;
+  width: 85%;
   height: 40px;
   padding: none;
   border: none;
@@ -111,4 +109,73 @@ body {
   font-family: "Bitter", serif;
   color: lightgrey;
   margin-top: 5px;
+}
+
+.time-input-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  /* gap: 5px; */
+}
+
+.time-inputs {
+}
+
+.time-inputs > * {
+  display: block;
+}
+
+.time-inputs label {
+  text-align: center;
+  font-family: "Bitter", serif;
+  font-size: 1.2rem;
+  color: lightgray;
+}
+
+.time-inputs select {
+  width: 85%;
+  height: 40px;
+  padding: 0px;
+  border: none;
+  text-align: center;
+  font-size: 1.2rem;
+  font-family: "Bitter", serif;
+  color: lightgrey;
+  outline: none;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+}
+
+.btn {
+  margin-top: 7px;
+  /* margin-bottom: 7px; */
+  height: 50px;
+  font-family: "Bitter", serif;
+  background: rgba(255, 255, 255, 0.1);
+  outline: none;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: lightgrey;
+  font-family: "Bitter", serif;
+  background-position: center;
+  transition: background 0.8s;
+}
+.btn-full {
+  font-size: 1rem;
+  width: 98%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn:hover {
+  background: #11193e radial-gradient(circle, transparent 1%, #11193e 1%)
+    center/15000%;
+  color: white;
+}
+
+.btn:active {
+  background-color: #d4a017;
+  background-size: 100%;
+  transition: background 0s;
 }

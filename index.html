@@ -39,8 +39,38 @@
                         </section>
                     </section>
                     <p class="sub-heading">Current Time</p>
+
                     <hr class="divider" />
-                    <section class="time-inputs"></section>
+                    <section class="time-input-section">
+                        <section class="time-input-container">
+                            <section class="time-inputs">
+                                <label for="hours-input">Hours</label>
+                                <select name="hours-input" id="hours-input">
+                                    <option value="00">00</option>
+                                </select>
+                            </section>
+                            <section class="time-inputs">
+                                <label for="minutes-input">Min</label>
+                                <select name="minutes-input" id="minutes-input">
+                                    <option value="00">00</option>
+                                </select>
+                            </section>
+                            <section class="time-inputs">
+                                <label for="seconds-input">Sec</label>
+                                <select name="seconds-input" id="seconds-input">
+                                    <option value="00">00</option>
+                                </select>
+                            </section>
+                            <section class="time-inputs">
+                                <label for="hours-input">AM/PM</label>
+                                <select name="hours-input" id="hours-input">
+                                    <option value="AM">AM</option>
+                                    <option value="PM">PM</option>
+                                </select>
+                            </section>
+                        </section>
+                        <button class="btn btn-full">Set Alarm</button>
+                    </section>
                 </div>
                 <hr class="divider" />
                 <div class="alrm-body"></div>
