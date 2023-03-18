@@ -1,11 +1,20 @@
 @import url("https://fonts.googleapis.com/css2?family=Bitter&family=Rajdhani:wght@600&display=swap");
 
+/*  defining common color variables */
+:root {
+  --transparent-white: rgba(255, 255, 255, 0.1);
+  --lgrey: lightgrey;
+}
+
+/* removing defauld margin and padding */
 * {
   margin: 0;
   padding: 0;
 }
 
-body {
+/*  applying common styles to body and main container */
+body,
+.container {
   height: 100vh;
   background-image: url("assets/bg3.avif");
   background-repeat: no-repeat;
@@ -13,125 +22,76 @@ body {
   background-position: center;
 }
 
+/* main container styles */
 .container {
-  height: 100vh;
   width: 97vw;
   margin: 0px auto;
-  background-image: url("assets/bg3.avif");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
 }
 
+/* alarm container styles */
 .alrm-container {
   max-width: 450px;
   width: 430px;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--transparent-white);
   backdrop-filter: blur(15px);
   padding: 10px;
   border-radius: 15px;
 }
 
+/* alarm logo styles */
 .logo > img {
   width: 40px;
   display: block;
-
   margin: 0 auto;
 }
 
+/* heading styles */
 .logo > p {
   text-align: center;
-  /* padding: 10px; */
   font-family: "Bitter", serif;
   font-size: 1.5rem;
   font-weight: bold;
-  color: lightgrey;
+  color: var(--lgrey);
 }
 
+/* styles for divider */
 .divider {
   border: none;
   height: 2px;
   background-image: linear-gradient(to right, transparent, #ccc, transparent);
-  margin: 20px 0;
+  margin: 15px 0;
 }
 
-.current-time {
+/* common styles for current time container as well as time input constainer */
+.current-time,
+.time-input-container {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 0px;
 }
 
-.time-current {
-}
-
-.time-current > * {
-  display: block;
-}
-
-.time-current label {
-  text-align: center;
-  font-family: "Bitter", serif;
-  font-size: 1.3rem;
-  color: lightgray;
-}
-
-.time-current input {
-  width: 85%;
-  height: 40px;
-  padding: none;
-  border: none;
-  font-size: 1.2rem;
-  font-family: "Bitter", serif;
-  color: lightgrey;
-  outline: none;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(15px);
-  padding-left: 0.6rem;
-  -moz-appearance: textfield;
-  text-align: center;
-  caret-color: white;
-}
-
-.time-current input[type="number"]::-webkit-outer-spin-button,
-.time-current input[type="number"]::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-.sub-heading {
-  text-align: center;
-  font-size: 1.2rem;
-  font-family: "Bitter", serif;
-  color: lightgrey;
-  margin-top: 5px;
-}
-
-.time-input-container {
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  /* gap: 5px; */
-}
-
-.time-inputs {
-}
-
+/* common styles for current time container as well as time input constainer */
+.time-current > *,
 .time-inputs > * {
   display: block;
 }
 
+/* input lables styling */
+.time-current label,
 .time-inputs label {
   text-align: center;
   font-family: "Bitter", serif;
-  font-size: 1.2rem;
-  color: lightgray;
+  font-size: 1.3rem;
+  color: var(--lgrey);
 }
 
+/* common styles for input and select box */
+.time-current input,
 .time-inputs select {
   width: 85%;
   height: 40px;
@@ -140,27 +100,53 @@ body {
   text-align: center;
   font-size: 1.2rem;
   font-family: "Bitter", serif;
-  color: lightgrey;
+  color: var(--lgrey);
   outline: none;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--transparent-white);
   backdrop-filter: blur(15px);
 }
 
+/* styles for input  */
+.time-current input {
+  padding-left: 0.6rem;
+  -moz-appearance: textfield;
+  text-align: center;
+  caret-color: white;
+}
+
+/* removing the default styles from input type */
+.time-current input[type="number"]::-webkit-outer-spin-button,
+.time-current input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* styles for sub headings */
+.sub-heading {
+  text-align: center;
+  font-size: 1.2rem;
+  font-family: "Bitter", serif;
+  color: var(--lgrey);
+  margin-top: 5px 0;
+}
+
+/* common styles for buttons */
 .btn {
   margin-top: 7px;
-  /* margin-bottom: 7px; */
   height: 50px;
   font-family: "Bitter", serif;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--transparent-white);
   outline: none;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  color: lightgrey;
+  color: var(--lgrey);
   font-family: "Bitter", serif;
   background-position: center;
   transition: background 0.8s;
 }
+
+/* full button styles */
 .btn-full {
   font-size: 1rem;
   width: 98%;
@@ -168,14 +154,68 @@ body {
   margin-right: auto;
 }
 
+/* regular button styles */
+.btn-regular {
+  padding: 4px;
+  height: 25px;
+  width: 35px;
+}
+.btn-dl {
+  background-color: rgba(255, 0, 0, 0.536);
+}
+/* adding hover effects to common btn class */
 .btn:hover {
   background: #11193e radial-gradient(circle, transparent 1%, #11193e 1%)
     center/15000%;
   color: white;
 }
 
+/* adding active effects to common btn class */
 .btn:active {
   background-color: #d4a017;
   background-size: 100%;
   transition: background 0s;
+}
+
+/* styles for ul tag */
+.alarms {
+  max-height: 185px;
+  overflow: scroll;
+  list-style-type: none;
+  width: 100%;
+  padding: 0;
+  padding-top: 5px;
+  margin: 0;
+  border-radius: 0px;
+  position: relative;
+}
+.alarms::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+/* common styles for all li in .alarms  */
+.alarm {
+  margin: 0 auto;
+  top: 0;
+  background: rgba(255, 255, 255, 0.275);
+  width: 90%;
+  color: var(--lgrey);
+  font-size: 1.1rem;
+  font-family: "Bitter", serif;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+}
+
+/* common effects styles for all li in .alarms  */
+.alarm:hover {
+  background: rgba(255, 255, 255, 0.337);
+  transform: scale(1.01);
+  color: white;
+  cursor: pointer;
 }

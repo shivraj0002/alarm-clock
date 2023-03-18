@@ -5,21 +5,28 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="src/assets/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="src/assets/favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="src/styles.css" />
     <title>Alarm Clock</title>
 </head>
 
 <body>
+    <!-- Starting with main Tag -->
     <main>
+        <!-- outer container -->
         <div class="container">
+            <!-- Inner container -->
             <div class="alrm-container">
+                <!-- upper section of alarm clock -->
                 <div class="alrm-head">
+                    <!-- logo and heading -->
                     <section class="logo">
                         <img src="src/assets/clock-icon.png" alt="clock-icon" />
                         <p>Alarm Clock</p>
                     </section>
+                    <!-- creating divider -->
                     <hr class="divider" />
+                    <!-- section for current time showcase -->
                     <section class="current-time">
                         <section class="time-current">
                             <label for="current-hours">Hours</label>
@@ -38,10 +45,15 @@
                             <input type="text" name="current-period" id="current-period" value="AM" disabled />
                         </section>
                     </section>
+                    <!-- suheading for current time -->
                     <p class="sub-heading">Current Time</p>
 
                     <hr class="divider" />
+                    <!-- starting with input section for alarm time input -->
+                    <!-- outer container for inputs -->
                     <section class="time-input-section">
+                        <!-- inner container for selcet drops -->
+                        <!-- hours select section -->
                         <section class="time-input-container">
                             <section class="time-inputs">
                                 <label for="hours-input">Hours</label>
@@ -49,18 +61,21 @@
                                     <option value="00">00</option>
                                 </select>
                             </section>
+                            <!-- minutes select section -->
                             <section class="time-inputs">
                                 <label for="minutes-input">Min</label>
                                 <select name="minutes-input" id="minutes-input">
                                     <option value="00">00</option>
                                 </select>
                             </section>
+                            <!-- seconds select section -->
                             <section class="time-inputs">
                                 <label for="seconds-input">Sec</label>
                                 <select name="seconds-input" id="seconds-input">
                                     <option value="00">00</option>
                                 </select>
                             </section>
+                            <!-- time period select section -->
                             <section class="time-inputs">
                                 <label for="hours-input">AM/PM</label>
                                 <select name="hours-input" id="hours-input">
@@ -69,11 +84,44 @@
                                 </select>
                             </section>
                         </section>
+                        <!-- set alarm button for further process -->
                         <button class="btn btn-full">Set Alarm</button>
                     </section>
                 </div>
                 <hr class="divider" />
-                <div class="alrm-body"></div>
+                <!-- starting with alarm body i.e. lists -->
+                <div class="alrm-body">
+                    <p class="sub-heading">Upcoming! Alarms</p>
+                    <!-- creating unordered list -->
+                    <ul class="alarms">
+                        <!-- <li class="float-effect"></li> -->
+                        <!-- alarms should be append here -->
+                        <li class="alarm">
+                            Alarm1
+                            <button class="btn btn-regular btn-dl">
+                                <img src="src/assets/bin.png" width="20px" alt="Delete-icon">
+                            </button>
+                        </li>
+                        <li class="alarm">
+                            Alarm2
+                            <button class="btn btn-regular btn-dl">
+                                <img src="src/assets/bin.png" width="20px" alt="Delete-icon">
+                            </button>
+                        </li>
+                        <li class="alarm">
+                            Alarm3
+                            <button class="btn btn-regular btn-dl">
+                                <img src="src/assets/bin.png" width="20px" alt="Delete-icon">
+                            </button>
+                        </li>
+                        <li class="alarm">
+                            Alarm4
+                            <button class="btn btn-regular btn-dl">
+                                <img src="src/assets/bin.png" width="20px" alt="Delete-icon">
+                            </button>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </main>
