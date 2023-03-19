@@ -1,4 +1,5 @@
 let alarmList = [];
+
 const audio = document.querySelector("#audioTrack");
 const scrollDownIcon = document.querySelector("#scroll-down");
 function handleCloseAlarm() {
@@ -95,6 +96,11 @@ function renderList() {
     } else {
         scrollDownIcon.style.display = "none";
     }
+    if (alarmList.length > 0) {
+        localStorage.setItem('alarmList', JSON.stringify(alarmList));
+    } else {
+        localStorage.removeItem('alarmList');
+    }
 }
 // adding function to alarmList
 function addToAlarmList(child) {
@@ -173,3 +179,30 @@ document.addEventListener("click", function (e) {
         removeAlarm(id);
     }
 });
+
+(
+    function () {
+        const retrievedArray = JSON.parse(localStorage.getItem('alarmList'));
+        if (retrievedArray == undefined) {
+            return
+        }
+        let retrive = window.confirm("Do You want to recover previously saved alarms?");
+        if (retrive) {
+            for (const element of retrievedArray) {
+                let todayTime = new Date();
+                let shouldTime = new Date(element.time);
+                todayTime.setHours(shouldTime.getHours());
+                todayTime.setMinutes(shouldTime.getMinutes());
+                todayTime.setSeconds(shouldTime.getSeconds());
+                let child = { ...element, time: todayTime }
+                alarmList.push(child);
+            }
+            renderList();
+            for (const child of alarmList) {
+                setAlarm(child.time);
+            }
+        } else {
+            localStorage.removeItem("alarmList")
+        }
+    }
+)();
