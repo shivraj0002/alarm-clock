@@ -1,25 +1,35 @@
+// global array for setting alarms
 let alarmList = [];
 
-const audio = document.querySelector("#audioTrack");
-const scrollDownIcon = document.querySelector("#scroll-down");
-function handleCloseAlarm() {
-    // Hide the dialog box
-    dialogBox.style.display = "none";
-    dialogBoxOutput.innerHTML = "";
-    audio.currentTime = 0;
-    audio.pause();
-}
-// Get the dialog box element
-const dialogBox = document.getElementById("dialog-box");
-const dialogBoxOutput = document.getElementById("dialog-output");
-// Get the confirm and cancel buttons
-const confirmBtn = document.getElementById("confirm-btn");
-confirmBtn.addEventListener("click", handleCloseAlarm);
-// targetting the select drops
+// targetting the select drops and setAlarm btn
 const hoursSelectDrop = document.querySelector("#hours-input");
 const minutesSelectDrop = document.querySelector("#minutes-input");
 const secondsSelectDrop = document.querySelector("#seconds-input");
 const periodSelectDrop = document.querySelector("#period-input");
+const setAlarmbtn = document.querySelector("#setAlarmBtn")
+
+// targetting the current time inputs
+const currentHours = document.querySelector("#current-hours");
+const currentMinutes = document.querySelector("#current-minutes");
+const currentSeconds = document.querySelector("#current-seconds");
+const currentPeriod = document.querySelector("#current-period");
+
+// targetting the alarms container
+const alarmListContainer = document.querySelector(".alarms");
+
+// Get the dialog box element
+const dialogBox = document.getElementById("dialog-box");
+const dialogBoxOutput = document.getElementById("dialog-output");
+
+// Get the confirm and cancel buttons
+const confirmBtn = document.getElementById("confirm-btn");
+
+// targeting audio tag for playing sound when alarm is active
+const audio = document.querySelector("#audioTrack");
+
+// scroll icon if list is scrollable
+const scrollDownIcon = document.querySelector("#scroll-down");
+
 // setting the select drop values with help of js to save lot of code in html document
 (function () {
     for (let index = 1; index <= 59; index++) {
@@ -33,45 +43,8 @@ const periodSelectDrop = document.querySelector("#period-input");
         secondsSelectDrop.innerHTML = secondsSelectDrop.innerHTML + child;
     }
 })();
-// targetting the current time inputs
-const currentHours = document.querySelector("#current-hours");
-const currentMinutes = document.querySelector("#current-minutes");
-const currentSeconds = document.querySelector("#current-seconds");
-const currentPeriod = document.querySelector("#current-period");
 
-// current time updating function
-function currentTimeUpdater() {
-    let date = new Date();
-    let hours = date.getHours();
-    let minutes = date.getMinutes();
-    let seconds = date.getSeconds();
-    let period = hours >= 12 ? "PM" : "AM";
-
-    if (hours == 0) {
-        hours = 12;
-    } else if (hours > 12) {
-        hours = hours - 12;
-    }
-    currentHours.value = hours;
-    currentMinutes.value = minutes;
-    currentSeconds.value = seconds;
-    currentPeriod.value = period;
-}
-setInterval(() => {
-    currentTimeUpdater();
-}, 1000);
-
-// defining get date function
-function getDate({ hours, minutes, seconds, period }) {
-    let date = new Date();
-    date.setHours(hours + (period === "PM" && hours !== 12 ? 12 : 0));
-    date.setMinutes(minutes);
-    date.setSeconds(seconds);
-    // console.log(date);
-    return date;
-}
 // rendrList functin for rendering alarms in ul i.e. alarms container
-const alarmListContainer = document.querySelector(".alarms");
 function renderList() {
     alarmListContainer.innerHTML = "";
     alarmList.map((child, index) => {
@@ -102,12 +75,20 @@ function renderList() {
         localStorage.removeItem('alarmList');
     }
 }
-// adding function to alarmList
+
+// element adding function to alarmList
 function addToAlarmList(child) {
     alarmList.push({ ...child });
     renderList();
 }
-// getting inputed data from select drop
+
+// element removing function to alarmList
+function removeAlarm(id) {
+    alarmList = alarmList.filter((item) => item.id != id);
+    renderList();
+}
+
+// getting inputed data from select drops
 function getSelectDropsData() {
     let hours = parseInt(hoursSelectDrop.value);
     let minutes = parseInt(minutesSelectDrop.value);
@@ -120,7 +101,18 @@ function getSelectDropsData() {
         period,
     };
 }
-// function for ringing the alarm
+
+// defining get date function based on selectdrop values
+function getDate({ hours, minutes, seconds, period }) {
+    let date = new Date();
+    date.setHours(hours + (period === "PM" && hours !== 12 ? 12 : 0));
+    date.setMinutes(minutes);
+    date.setSeconds(seconds);
+    // console.log(date);
+    return date;
+}
+
+// function for ringing the alarm and adding to dialogbox
 function ringAlarm(time) {
     audio.play();
     let para = document.createElement("p");
@@ -133,8 +125,8 @@ function ringAlarm(time) {
     para.innerHTML = alarmTime;
     dialogBoxOutput.append(para);
     dialogBox.style.display = "block";
-    console.log(stop);
 }
+
 // function for setting the alarm
 function setAlarm(alarmTime) {
     let currentTime = new Date();
@@ -147,8 +139,8 @@ function setAlarm(alarmTime) {
     setTimeout(() => {
         ringAlarm(alarmTime);
     }, diff);
-    console.log(diff);
 }
+
 // appening function in ul for alarms
 function addAlarm() {
     let input = getSelectDropsData();
@@ -166,12 +158,45 @@ function addAlarm() {
     setAlarm(time);
     // console.log(childObj);
 }
-document.getElementById("setAlarmBtn").addEventListener("click", addAlarm);
-function removeAlarm(id) {
-    alarmList = alarmList.filter((item) => item.id != id);
-    renderList();
+
+// handling setAlarm click
+setAlarmbtn.addEventListener("click", addAlarm);
+
+// Hide the dialog box and stop ringing alarm
+function handleCloseAlarm() {
+    dialogBox.style.display = "none";
+    dialogBoxOutput.innerHTML = "";
+    audio.currentTime = 0;
+    audio.pause();
 }
-// adding event delegation
+
+// current time updating function
+function currentTimeUpdater() {
+    let date = new Date();
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
+    let seconds = date.getSeconds();
+    let period = hours >= 12 ? "PM" : "AM";
+
+    if (hours == 0) {
+        hours = 12;
+    } else if (hours > 12) {
+        hours = hours - 12;
+    }
+    currentHours.value = hours;
+    currentMinutes.value = minutes;
+    currentSeconds.value = seconds;
+    currentPeriod.value = period;
+}
+
+// set the interval for updation of time each second
+(function () {
+    setInterval(() => {
+        currentTimeUpdater();
+    }, 1000);
+})();
+
+// adding event delegation to save code writing and repeating
 document.addEventListener("click", function (e) {
     // console.log(e.target);
     if (e.target.id == "delete") {
@@ -180,6 +205,10 @@ document.addEventListener("click", function (e) {
     }
 });
 
+// adding event listener to hide dialog box
+confirmBtn.addEventListener("click", handleCloseAlarm);
+
+// writing fe for alarms retention
 (
     function () {
         const retrievedArray = JSON.parse(localStorage.getItem('alarmList'));
