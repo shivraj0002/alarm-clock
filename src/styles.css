@@ -70,6 +70,7 @@ body,
 .current-time,
 .time-input-container {
   width: 100%;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 0px;
@@ -122,7 +123,8 @@ body,
 }
 
 /* styles for sub headings */
-.sub-heading {
+.sub-heading,
+#dialog-box p {
   text-align: center;
   font-size: 1.2rem;
   font-family: "Bitter", serif;
@@ -160,9 +162,11 @@ body,
   height: 25px;
   width: 35px;
 }
+
 .btn-dl {
   background-color: rgba(255, 0, 0, 0.536);
 }
+
 /* adding hover effects to common btn class */
 .btn:hover {
   background: #11193e radial-gradient(circle, transparent 1%, #11193e 1%)
@@ -180,6 +184,7 @@ body,
 /* styles for ul tag */
 .alarms {
   max-height: 185px;
+  height: 185px;
   overflow: scroll;
   list-style-type: none;
   width: 100%;
@@ -187,12 +192,14 @@ body,
   padding-top: 5px;
   margin: 0;
   border-radius: 0px;
-  position: relative;
+  /* position: relative; */
 }
+
 .alarms::-webkit-scrollbar {
   width: 0;
   height: 0;
 }
+
 /* common styles for all li in .alarms  */
 .alarm {
   margin: 0 auto;
@@ -218,4 +225,34 @@ body,
   transform: scale(1.01);
   color: white;
   cursor: pointer;
+}
+
+/* The dialog box styles */
+#dialog-box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  /* height: 100px; */
+  max-width: 250px;
+  width: 90vw;
+  display: none;
+  font-size: 1.1rem;
+  font-family: "Bitter", serif;
+  color: white;
+  background: var(--transparent-white);
+  backdrop-filter: blur(1000px);
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  z-index: 9999;
+}
+
+.alrm-body {
+  position: relative;
+}
+
+#scroll-down {
+  position: absolute;
+  bottom: 5px;
+  right: -18px;
+  display: none;
 }

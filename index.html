@@ -85,7 +85,7 @@
                             </section>
                         </section>
                         <!-- set alarm button for further process -->
-                        <button class="btn btn-full">Set Alarm</button>
+                        <button id="setAlarmBtn" class="btn btn-full">Set Alarm</button>
                     </section>
                 </div>
                 <hr class="divider" />
@@ -103,9 +103,16 @@
                             </button>
                         </li> -->
                     </ul>
+                    <img src="src/assets/scroll.png" alt="scroll down" id="scroll-down" width="40">
                 </div>
             </div>
         </div>
+        <!-- The dialog box container -->
+        <div id="dialog-box">
+            <p id="dialog-output"></p>
+            <button id="confirm-btn" class="btn btn-full">Stop</button>
+        </div>
+        <audio id="audioTrack" src="src/assets/ringtone.mp3" loop hidden></audio>
     </main>
     <script src="src/index.js"></script>
 </body>
